@@ -8,7 +8,7 @@ export async function GellAllMeme() {
     connectToDatabase();
 
     const meme = await Meme.find();
-    return meme;
+    return JSON.parse(JSON.stringify(meme));
   } catch (error) {
     console.log(error);
     throw error;
