@@ -6,6 +6,7 @@
 
 body {
   font-family: "Inter", sans-serif;
+  overscroll-behavior: none;
 }
 
 @layer utilities {
@@ -63,8 +64,8 @@ body {
 }
 
 .active-theme {
-  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-    brightness(104%) contrast(106%) !important;
+  filter: invert(23%) sepia(88%) saturate(2920%) hue-rotate(200deg)
+    brightness(100%) contrast(98%) !important;
 }
 
 .light-gradient {

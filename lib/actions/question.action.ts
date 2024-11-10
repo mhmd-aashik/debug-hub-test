@@ -61,9 +61,9 @@ export async function getQuestions(params: GetQuestionsParams) {
       .populate({ path: "author", model: User })
       .skip(skipAmount)
       .limit(pageSize)
-      .sort(sortOptions);
+      .sort(sortOptions)
 
-    const totalQuestions = await Question.countDocuments(query);
+    const totalQuestions = await Question.countDocuments(query)
 
     const isNext = totalQuestions > skipAmount + questions.length;
 
@@ -293,6 +293,7 @@ export async function getHotQuestions() {
   try {
     connectToDatabase();
     const hotQuestion = await Question.find({})
+      .populate({ path: "tags", model: Tag, select: "_id name" })
       .sort({ views: -1, upvotes: -1 })
       .limit(5); // in decending order big to small
 

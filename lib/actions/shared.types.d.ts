@@ -157,3 +157,11 @@ export interface GetUserStatsParams {
 export interface DeleteUserParams {
   clerkId: string;
 }
+
+export interface GetFormattedSalaryParams {
+  min: number;
+  max: number;
+  currency: string;
+  period: string;
+}
+

@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import qs from "query-string";
 import { BADGE_CRITERIA } from "@/constants";
 import { BadgeCounts } from "@/types";
+import { techMap } from "@/constants/techMap";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -124,3 +125,34 @@ export const assignBadges = (params: BadgeParam) => {
 
   return badgeCounts;
 };
+
+export const getDeviconClassName = (techName: string) => {
+  const normalizedTechName = techName.replace(/[ .]/g, "").toLowerCase();
+
+  return techMap[normalizedTechName]
+    ? `${techMap[normalizedTechName]} colored`
+    : "devicon-devicon-plain";
+};
+
+export function processJobTitle(title: string | undefined | null): string {
+  if (title === undefined || title === null) {
+    return "No Job Title";
+  }
+
+  const words = title.split(" "); // 2 words
+
+  const validWords = words.filter((word) => {
+    return (
+      word !== undefined &&
+      word !== null &&
+      word.toLowerCase() !== "undefined" &&
+      word.toLowerCase() !== "null"
+    );
+  });
+
+  if (validWords.length === 0) {
+    return "No Job Title";
+  }
+
+  return validWords.join(" ");
+}

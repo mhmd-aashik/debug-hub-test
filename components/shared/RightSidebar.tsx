@@ -4,31 +4,7 @@ import React from "react";
 import RenderTag from "./RenderTag";
 import { getHotQuestions } from "@/lib/actions/question.action";
 import { getTopPopularTags } from "@/lib/actions/tag.action";
-
-// const hotQuestions = [
-//   {
-//     _id: "1",
-//     title: "What are the best practices for writing clean code in JavaScript?",
-//   },
-//   {
-//     _id: "2",
-//     title: "How can I improve my problem-solving skills as a programmer?",
-//   },
-//   {
-//     _id: "3",
-//     title: "What are some effective strategies for debugging in Python?",
-//   },
-//   { _id: "4", title: "How does the CSS Box Model work?" },
-//   { _id: "5", title: "What are some common pitfalls to avoid when using Git?" },
-// ];
-
-// const popularTags = [
-//   { _id: "1", name: "python", totalQuestions: 5 },
-//   { _id: "2", name: "javascript", totalQuestions: 10 },
-//   { _id: "3", name: "react", totalQuestions: 8 },
-//   { _id: "4", name: "html", totalQuestions: 7 },
-//   { _id: "5", name: "css", totalQuestions: 6 },
-// ];
+import { getDeviconClassName } from "@/lib/utils";
 
 const RightSidebar = async () => {
   const hotQuestions = await getHotQuestions();
@@ -39,24 +15,32 @@ const RightSidebar = async () => {
       <div>
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
         <div className="mt-7 flex w-full flex-col gap-[30px]">
-          {hotQuestions.map((question) => (
-            <Link
-              href={`question/${question._id}`}
-              key={question._id}
-              className="flex cursor-pointer items-center justify-between gap-7"
-            >
-              <p className="body-medium text-dark500_light700">
-                {question.title}
-              </p>
-              <Image
-                src="/assets/icons/chevron-right.svg"
-                alt="chevron-right"
-                width={20}
-                height={20}
-                className="invert-colors"
-              />
-            </Link>
-          ))}
+          {hotQuestions.map((question) => {
+            // out put the tag name
+
+            const tagsName = question.tags.map((tag: any) => tag.name);
+            const iconClass = getDeviconClassName(tagsName[0]);
+
+            return (
+              <Link
+                href={`question/${question._id}`}
+                key={question._id}
+                className="flex cursor-pointer items-center justify-between gap-7"
+              >
+                <p className="body-medium  text-dark500_light700">
+                  <i className={`${iconClass} mr-2 text-xl`}></i>
+                  {question.title}
+                </p>
+                <Image
+                  src="/assets/icons/chevron-right.svg"
+                  alt="chevron-right"
+                  width={20}
+                  height={20}
+                  className="invert-colors"
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
       <div className="mt-16">
