@@ -40,8 +40,6 @@ const Page = async ({ searchParams }: Props) => {
 
   const page = parseInt(searchParams.page ?? 1);
 
-  console.log(jobs[0], countries);
-
   return (
     <>
       <div>
