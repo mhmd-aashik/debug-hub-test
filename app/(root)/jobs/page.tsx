@@ -11,12 +11,6 @@ import {
 
 import { Job } from "@/types";
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Jobs | DevOverFlow",
-};
-
 interface Props {
   searchParams: {
     q: string;
@@ -57,11 +51,11 @@ const Page = async ({ searchParams }: Props) => {
         </div>
       </div>
 
-      <section className="light-border mb-9 mt-11 flex flex-col gap-9 border-b pb-9">
+      <div className="light-border mb-9 mt-11 flex flex-col gap-9 border-b pb-9">
         {jobs.length > 0 ? (
           jobs.map((job: Job) => {
             if (job.job_title && job.job_title.toLowerCase() !== "undefined")
-              return <JobCard key={job.id} job={job} />;
+              return <JobCard key={job.job_id} job={job} />;
 
             return null;
           })
@@ -71,7 +65,7 @@ const Page = async ({ searchParams }: Props) => {
             later
           </p>
         )}
-      </section>
+      </div>
 
       {jobs.length > 0 && (
         <Pagination pageNumber={page} isNext={jobs.length === 10} />
