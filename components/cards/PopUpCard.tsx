@@ -96,8 +96,8 @@ const PopUpCard = ({ result }: any) => {
             <Image
               src={selectedMeme.url}
               alt={selectedMeme.name}
-              width={800}
-              height={800}
+              width={1800}
+              height={1800}
               className="max-h-[80vh] max-w-full overflow-hidden rounded-xl object-contain"
             />
           </div>
