@@ -9,7 +9,7 @@ const BlogPage = async () => {
 
   return (
     <>
-      <div className="mb-8 flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="mb-8 flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="h1-bold text-dark100_light900">Explore Blogs</h1>
 
         <Link href="/ask-question" className="flex justify-end max-sm:w-full">
@@ -19,22 +19,22 @@ const BlogPage = async () => {
         </Link>
       </div>
 
-      <div className="grid place-items-center sm:grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {result.map((data: any) => (
           <div
-            className="flex h-full max-w-[350px] flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+            className="flex h-full flex-col space-x-7 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
             key={data.id}
           >
-            <div className="relative h-56 w-full max-w-[350px]">
+            <div className="relative h-56 w-full">
               <Image
-                className="object-cover max-w-[350px]"
+                className="size-full object-cover"
                 src={data.social_image}
                 alt={data.title}
                 layout="fill"
               />
             </div>
 
-            <div className="flex grow flex-col p-4 max-w-[350px]">
+            <div className="flex grow flex-col p-4">
               <h3 className="text-xl font-semibold text-gray-800">
                 {data.title}
               </h3>
