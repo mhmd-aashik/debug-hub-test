@@ -16,8 +16,6 @@ const RightSidebar = async () => {
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
         <div className="mt-7 flex w-full flex-col gap-[30px]">
           {hotQuestions.map((question) => {
-            // out put the tag name
-
             const tagsName = question.tags.map((tag: any) => tag.name);
             const iconClass = getDeviconClassName(tagsName[0]);
 
@@ -25,9 +23,9 @@ const RightSidebar = async () => {
               <Link
                 href={`question/${question._id}`}
                 key={question._id}
-                className="flex cursor-pointer items-center justify-between gap-7"
+                className="flex cursor-pointer items-center justify-between  gap-7 rounded-md bg-primary-500/10"
               >
-                <p className="body-medium  text-dark500_light700">
+                <p className="body-medium  text-dark500_light700 px-2 py-4">
                   <i className={`${iconClass} mr-2 text-xl`}></i>
                   {question.title}
                 </p>
